@@ -2,12 +2,12 @@ import time
 import winsound
 import random
 
-def log(frequency, guess, file_name):
+def log_guess(frequency, guess, file_name):
     with open(file_name, "a") as f:
         current_time_seconds = int(time.time())
         f.write(f"{frequency}\t{guess}\t{current_time_seconds}\n")
 
-user = "eee"
+user = ""
 while user not in ["r", "b"]:
     user = input("Enter 'r' for ruben or 'b' for bastiaan: ")
 
@@ -32,7 +32,7 @@ while True:
     print(frequency)
 
     # log user's guess
-    log(frequency, guess, "log.txt")
+    log_guess(frequency, guess, user)
     
     # do not log after answer has been given
     next = input()
