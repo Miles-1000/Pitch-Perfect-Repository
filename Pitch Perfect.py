@@ -2,6 +2,9 @@ import time
 import winsound
 import random
 
+import librosa
+# librosa.hz_to_note(440.0)
+
 def log_guess(frequency, guess, file_name):
     with open(file_name, "a") as f:
         current_time_seconds = int(time.time())
