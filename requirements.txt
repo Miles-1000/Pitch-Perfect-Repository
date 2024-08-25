@@ -1,1 +1,1 @@
-librosa
+librosa, musicpy
