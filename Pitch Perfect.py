@@ -1,14 +1,5 @@
-import time
-import winsound
-import random
-import librosa
-import piano
-
-
-def log_guess(frequency, guess, file_name):
-    with open(file_name, "a") as f:
-        current_time_seconds = int(time.time())
-        f.write(f"{frequency}\t{guess}\t{current_time_seconds}\n")
+import pianoMode
+import frequencyMode
 
 user = ""
 while user not in ["r", "b"]:
@@ -19,34 +10,12 @@ if user == "r":
 elif user == "b":
     user = "bastiaan.txt"
 
-mode = input("Piano(p) or Frequency(f): ")
+while True:
+    mode = input("Piano(p) or Frequency(f): ")
 
-if mode == "p":
-    while True:
-        piano.piano()
-elif mode == "f":
-    while True:
-        frequency = random.randint(27,4186)
-        duration = 2000 
-        winsound.Beep(frequency, duration)
-
-        guess = input()
-
-        # get user's guess
-        while guess == "r":
-            winsound.Beep(frequency, duration)
-            guess = input()
-        
-        # display answer
-        print(frequency)
-
-        # log user's guess
-        log_guess(frequency, guess, user)
-        
-        # do not log after answer has been given
-        next = input()
-        while next != "":
-            if next == "r":
-                winsound.Beep(frequency, duration)
-            next = input()
+    if mode == "p":
+        while pianoMode.piano(user): ...
+    elif mode == "f":
+        while frequencyMode.frequency(user): ...
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~")
             

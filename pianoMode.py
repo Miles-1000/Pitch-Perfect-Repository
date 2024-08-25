@@ -15,7 +15,7 @@ import librosa
 
 notes = ['C4', 'C#4', 'D4', 'D#4', 'E4', 'F4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4']
 
-def piano():
+def piano(user):
     # get random note
     noteStr = random.choice(notes)
 
@@ -38,4 +38,7 @@ def piano():
     while next != "":
         if next == "r":
             mp.play(noteMp, wait=True)
+        elif next == "q":
+            return False
         next = input()
+    return True
