@@ -1,1 +1,3 @@
-librosa, musicpy
+librosa
+musicpy
+matplotlib

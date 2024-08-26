@@ -3,6 +3,8 @@ import string
 import random
 import librosa
 
+BPM = 50
+
 # notes = ['A0', 'A#0', 'B0', 
 #  'C1', 'C#1', 'D1', 'D#1', 'E1', 'F1', 'F#1', 'G1', 'G#1', 'A1', 'A#1', 'B1',
 #  'C2', 'C#2', 'D2', 'D#2', 'E2', 'F2', 'F#2', 'G2', 'G#2', 'A2', 'A#2', 'B2',
@@ -22,13 +24,14 @@ def piano(user):
     noteMp = mp.note(noteStr[:-1], int(noteStr[-1]))
 
     # play note
-    mp.play(noteMp, wait=True)
+    play = lambda: mp.play(noteMp, wait=True, bpm=BPM)
+    play()
 
     guess = input()
 
     # get user's guess
     while guess == "r":
-        mp.play(noteMp, wait=True)
+        play()
         guess = input()
 
     # display answer
@@ -37,7 +40,7 @@ def piano(user):
     next = input()
     while next != "":
         if next == "r":
-            mp.play(noteMp, wait=True)
+            play()
         elif next == "q":
             return False
         next = input()
