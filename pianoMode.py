@@ -25,6 +25,8 @@ def piano(user):
 
     # play note
     play = lambda: mp.play(noteMp, wait=True, bpm=BPM)
+    # play C4
+    mp.play(('C', 4), wait=True, bpm=BPM)
     play()
 
     guess = input()
