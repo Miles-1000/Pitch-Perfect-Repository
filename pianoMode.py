@@ -15,7 +15,7 @@ BPM = 50
 #  'C7', 'C#7', 'D7', 'D#7', 'E7', 'F7', 'F#7', 'G7', 'G#7', 'A7', 'A#7', 'B7',
 #  'C8']
 
-notes = ['C4', 'C#4', 'D4']#, 'D#4']
+notes = ['B0','B1','B2','B3','B4','B5','B6','B7']
 
 def piano(user):
     # get random note
@@ -25,8 +25,10 @@ def piano(user):
 
     # play note
     play = lambda: mp.play(noteMp, wait=True, bpm=BPM)
+
     # play C4
-    mp.play(('C', 4), wait=True, bpm=BPM)
+    # mp.play(mp.note('C', 4), wait=True, bpm=BPM)
+    
     play()
 
     guess = input()
@@ -43,7 +45,9 @@ def piano(user):
     while next != "":
         if next == "r":
             play()
-        elif next == "q":
+        if "play " in next:
+            mp.play(mp.note(next[-2:])) 
+        if next == "q":
             return False
         next = input()
     return True
